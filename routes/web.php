@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
 
 // Route::group(["middleware" => "auth:api"], function () {
@@ -21,11 +21,11 @@ Route::get('/', function () {
 
 // produits routes
 Route::prefix('/produits')->group(function () {
-    Route::get("/list", "index", ListProduits::class);
-    Route::get("/create", "create", CreateProduits::class);
-    Route::get("/{produitId}/details", "show", DetailsProduits::class);
-    Route::get("/{produitId/update", "update", UpdateProduits::class);
-    Route::get("/{produitId}", "delete", DeleteProduits::class);
+    Route::get("/list",  ListProduits::class)->name("list");
+    Route::get("/create", CreateProduits::class)->name("create");
+    Route::get("/{produitId}/details", DetailsProduits::class)->name("details");
+    Route::get("/{produitId/update",  UpdateProduits::class)->name("update");
+    Route::get("/{produitId}", DeleteProduits::class)->name("delete");
 });
 
 
